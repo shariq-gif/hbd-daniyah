@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-1: #fff8f0;
+  --bg-2: #ffe9ef;
+  --bg-3: #efe7ff;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1200px 800px at 15% -10%, #ffe9ef 0%, transparent 55%),
+    radial-gradient(1100px 900px at 100% 0%, #efe7ff 0%, transparent 50%),
+    radial-gradient(900px 900px at 50% 120%, #fff3c4 0%, transparent 45%),
+    var(--bg-1);
+  color: #4a3f55;
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide the native cursor on devices that get the custom one. */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* ---- Reusable helpers ---------------------------------------------------- */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-dark {
+  background: rgba(20, 16, 31, 0.45);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #ff7ea0, #c9b8ff 45%, #ffb877);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.paper {
+  background:
+    linear-gradient(rgba(255, 251, 245, 0.9), rgba(255, 251, 245, 0.9)),
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      rgba(201, 184, 255, 0.25) 32px
+    );
+  background-color: #fffdf8;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.will-float {
+  will-change: transform;
+}
+
+/* Fancy scrollbar for letter area */
+.soft-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.soft-scroll::-webkit-scrollbar-thumb {
+  background: rgba(201, 184, 255, 0.6);
+  border-radius: 99px;
+}
+
+/* ---- Respect reduced motion --------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
