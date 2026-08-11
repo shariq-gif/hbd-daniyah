@@ -112,7 +112,7 @@ Seriously though — I hope this year brings you good moments, good people, way 
 
   /* ---- Music -------------------------------------------------------------
    * Something fun/upbeat is the vibe. Missing file is fine. */
-  music: "/audio/birthday-song.mp3",
+  music: "/audio/REGARDLESS_Asim_Azhar_Official_Video.mp3",
   musicPrompt: "yes, there's a soundtrack.",
 
   /* ---- The cat 🐱 --------------------------------------------------------
