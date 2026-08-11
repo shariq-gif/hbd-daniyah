@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fredoka, Caveat, Quicksand } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const display = Fredoka({
@@ -37,7 +38,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${hand.variable} ${body.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
