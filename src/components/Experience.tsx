@@ -11,6 +11,7 @@ import MusicPlayer from "@/components/MusicPlayer";
 import ProgressNav from "@/components/ProgressNav";
 import EasterEggs from "@/components/EasterEggs";
 import CatCompanion from "@/components/cat/CatCompanion";
+import Tracker from "@/components/Tracker";
 
 import OpeningScene from "@/components/scenes/OpeningScene";
 import WelcomeScene from "@/components/scenes/WelcomeScene";
@@ -44,6 +45,7 @@ function Stage() {
           : undefined,
       }}
     >
+      <Tracker />
       <ParticleField dark={dark} />
       <CustomCursor />
 

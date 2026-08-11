@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useAudio } from "@/context/AudioProvider";
 import { burstConfetti } from "@/lib/confetti";
+import { track } from "@/lib/track";
 import HintPulse from "@/components/ui/HintPulse";
 
 /* An interactive birthday cake: click it and a knife swings down, a slice is
@@ -16,6 +17,7 @@ export default function BirthdayCake({ onCut }: { onCut: () => void }) {
   const doCut = () => {
     if (cut) return;
     setCut(true);
+    track("cake");
     play("gift");
     setTimeout(() => play("chime"), 250);
     setTimeout(() => burstConfetti(0.5), 350);

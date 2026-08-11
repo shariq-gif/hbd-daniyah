@@ -6,6 +6,7 @@ import { birthdayData, withName } from "@/config/birthday.config";
 import { useAudio } from "@/context/AudioProvider";
 import { useJourney } from "@/context/JourneyProvider";
 import { fireworks, burstConfetti } from "@/lib/confetti";
+import { track } from "@/lib/track";
 import GlowButton from "@/components/ui/GlowButton";
 import RevealModal from "@/components/ui/RevealModal";
 import SmartImage from "@/components/ui/SmartImage";
@@ -72,6 +73,7 @@ export default function FinalScene() {
   }, []);
 
   const openSurprise = () => {
+    track("finale");
     play("gift");
     burstConfetti(0.55);
     setTimeout(() => fireworks(2500), 200);

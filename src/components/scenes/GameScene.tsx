@@ -6,6 +6,7 @@ import { birthdayData } from "@/config/birthday.config";
 import { useAudio } from "@/context/AudioProvider";
 import { useJourney } from "@/context/JourneyProvider";
 import { burstConfetti } from "@/lib/confetti";
+import { track } from "@/lib/track";
 import GlowButton from "@/components/ui/GlowButton";
 import RevealModal from "@/components/ui/RevealModal";
 
@@ -105,6 +106,12 @@ export default function GameScene() {
     const t = setTimeout(() => setToast(null), 1600);
     return () => clearTimeout(t);
   }, [score, phase, cfg.encouragements]);
+
+  // report the final score once the round ends
+  useEffect(() => {
+    if (phase === "done") track("game", { score });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
 
   const catchItem = (id: number) => {
     if (caughtRef.current.has(id)) return;

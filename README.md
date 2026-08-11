@@ -55,7 +55,8 @@ to touch a component. In there you can change:
 1. **Opening** — "Hey [NAME] 👋 … so obviously I had to do something
    unnecessarily complicated" → *Show me what you made →*
 2. **Look around** — a scene of clickable little things with silly one-liners
-3. **The gift** — tap to shake → it bursts open with the birthday reveal
+3. **The gift** — tap to shake → it bursts open, then **click the cake to cut a
+   slice** (knife swing, candles blow out) and move on
 4. **Photo dump** — draggable photos; tap one for the funny commentary
 5. **You, basically** — floating bubbles ("your chaotic energy", "that you
    tolerate me") + one hidden "…okay, one more"
@@ -77,8 +78,30 @@ bowl, glances at the cursor, and reacts to clicks (meow → annoyed → runs awa
 Its behaviour is a weighted state machine with randomised timing, so no two
 visits are the same. It lives in a pass-through layer so it can never block a
 button, and it politely steps aside to a corner during the catch game. Honors
-`prefers-reduced-motion` (mostly rests). There are also faint fireflies in the
-finale scene only.
+`prefers-reduced-motion` (mostly rests). It roams the whole page in 2D, has
+shaded fur + a contact shadow, a real 4-leg walk, and meows (drop your own
+`meow*.mp3` in `/public/audio/`, else a built-in synth). There are also faint
+fireflies in the finale scene only.
+
+## 👀 Visit tracking / logs
+
+Every visit is logged — when, roughly where (city/country from IP), device &
+browser, how far they got, secrets found, cat pets, referrer, and time spent.
+View them at **`/logs`** (password-protected).
+
+**Setup on Vercel** (its filesystem is temporary, so logs need a tiny database):
+
+1. Vercel → your project → **Storage** → **Create** → **Upstash Redis** (free) →
+   **Connect to Project**. This auto-adds the `KV_*` / `UPSTASH_*` env vars — you
+   don't type them by hand.
+2. Vercel → **Settings → Environment Variables** → add **`TRACKER_PASSWORD`** =
+   a password of your choice (this guards `/logs`).
+3. Redeploy. Then open `https://your-site.vercel.app/logs` and log in.
+
+Without a database it still runs, but only keeps data in memory (fine for local
+`npm run dev`; resets constantly on serverless — the dashboard shows a warning).
+See `.env.example`. Only approximate, IP-derived location is stored (no raw IP),
+matching standard web analytics — it's your site, but worth knowing what's kept.
 
 ## Notes
 

@@ -6,6 +6,7 @@ import { useJourney } from "@/context/JourneyProvider";
 import { useAudio } from "@/context/AudioProvider";
 import { birthdayData } from "@/config/birthday.config";
 import CatSprite, { type CatPose } from "@/components/cat/CatSprite";
+import { track } from "@/lib/track";
 
 /* ---------------------------------------------------------------------------
  * The living cat. Mounts once (via Experience) and roams the WHOLE page in 2D
@@ -251,6 +252,7 @@ export default function CatCompanion() {
   // ---- click reactions -----------------------------------------------------
   const onCatClick = useCallback(() => {
     if (!alive.current) return;
+    track("cat");
     clicks.current += 1;
     if (clickWin.current) clearTimeout(clickWin.current);
     clickWin.current = setTimeout(() => (clicks.current = 0), 2600);
